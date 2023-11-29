@@ -21,8 +21,10 @@ func TestGetAPIKeyFail(t *testing.T) {
 
 // GetAPIKey -
 func TestGetAPIKeySuccess(t *testing.T) {
+
 	header := http.Header{}
 	header.Add("Authorization", "ApiKey 123")
+
 	key, apiErr := GetAPIKey(header)
 	want := "123"
 
@@ -30,6 +32,6 @@ func TestGetAPIKeySuccess(t *testing.T) {
 		t.Fatalf("expected: %v, key: %v", nil, apiErr)
 	}
 	if !reflect.DeepEqual(want, key) {
-        t.Fatalf("expected: %v, key: %v", want, key)
-    }
+		t.Fatalf("expected: %v, key: %v", want, key)
+	}
 }
